@@ -1,0 +1,34 @@
+#include <iostream>
+#include <locale.h>
+#include "CalcModule.h"
+
+
+
+int main()
+{
+	setlocale(LC_ALL, "Rus");
+	int pos_x=-1, pos_y;
+	int step_count = 0;
+	do
+	{
+		printf("Введите номер ряда (диапазон от 0 до 7):");
+		scanf_s("%d", &pos_x);
+	} 
+	while (pos_x < 0 || 7<pos_x);
+	do
+		{
+		printf("Введите номер столбца (диапазон от 0 до 7):");
+		scanf_s("%d", &pos_y);
+	} 
+	while (pos_y < 0 && pos_y>7);
+	
+	step_count += calculate(pos_x, pos_y, 1, 1);
+	step_count += calculate(pos_x, pos_y, -1, 1);
+	step_count += calculate(pos_x, pos_y, 1, -1);
+	step_count += calculate(pos_x, pos_y, -1, -1);
+
+
+	printf("%d", step_count);
+	return 0;
+
+}
